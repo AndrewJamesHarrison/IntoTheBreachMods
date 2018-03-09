@@ -573,17 +573,24 @@ Prime_Shift = Skill:new{
 	UpgradeCost = {1,3},
 	Range = 1, --TOOLTIP INFO
 	LaunchSound = "/weapons/shift",
-	TipImage = StandardTips.Melee
+	TipImage = StandardTips.Melee,
+	ArtillerySize = 2,
 }
 
 function Prime_Shift:GetTargetArea(point)
 	local ret = PointList()
-	for i = DIR_START, DIR_END do
-		if not Board:IsBlocked(point - DIR_VECTORS[i], PATH_FLYER) 
-			and Board:IsPawnSpace(point + DIR_VECTORS[i])
-			and not Board:GetPawn(point + DIR_VECTORS[i]):IsGuarding() then
-			ret:push_back(point + DIR_VECTORS[i])
-		
+	
+	for dir = DIR_START, DIR_END do
+		for i = 1, self.ArtillerySize do
+			local curr = Point(point + DIR_VECTORS[dir] * i)
+			if not Board:IsValid(curr) then
+				break
+			end
+			
+			if not Board:IsBlocked(curr,PATH_FLYER) then
+				ret:push_back(curr)
+			end
+
 		end
 	end
 	
@@ -592,19 +599,20 @@ end
 
 function Prime_Shift:GetSkillEffect(p1, p2)
 	local ret = SkillEffect()
-	local dir = GetDirection(p2 - p1)
+	local dir = GetDirection(p1 - p2)
+	local oppositeDir = GetDirection(p2 - p1)
 	
 	local move = PointList()
+	move:push_back(p1-DIR_VECTORS[oppositeDir])
 	move:push_back(p2)
-	move:push_back(p1-DIR_VECTORS[dir])
 	
 	local fake_punch = SpaceDamage(p2,0)
 	ret:AddMelee(p1,fake_punch)
 	ret:AddLeap(move, FULL_DELAY)
 	
-	local damage = SpaceDamage(p1-DIR_VECTORS[dir],self.Damage)
+	local damage = SpaceDamage(p2,self.Damage)
 		
-	if not self.FriendlyDamage and Board:IsPawnTeam(p2,TEAM_PLAYER) then
+	if not self.FriendlyDamage and Board:IsPawnTeam(p1,TEAM_PLAYER) then
 		damage.iDamage = 0
 	end
 	
@@ -615,7 +623,7 @@ end
 
 
 Prime_Shift_A = Prime_Shift:new{
-	FriendlyDamage = false,
+	ArtillerySize = 4,
 	TipImage = {
 		Unit = Point(2,2),
 		Friendly = Point(2,1),

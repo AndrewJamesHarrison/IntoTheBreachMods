@@ -315,9 +315,9 @@ Prime_RocketPunch_B_UpgradeDescription = "Increases damage by 2.",
 
 Prime_Shift_Name = "Vice Fist",
 Prime_Shift_Description = "Grab a unit and toss it behind you.", 
-Prime_Shift_Upgrade1 = "Ally Immune",
+Prime_Shift_Upgrade1 = "+3 Range",
 Prime_Shift_Upgrade2 = "+2 Damage",
-Prime_Shift_A_UpgradeDescription = "Deals no damage to allies.",
+Prime_Shift_A_UpgradeDescription = "Extends throwing range by 3 tiles.",
 Prime_Shift_B_UpgradeDescription = "Increases damage by 2.",
 
 Prime_Flamethrower_Name = "Flame Thrower",

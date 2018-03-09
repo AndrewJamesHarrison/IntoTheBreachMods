@@ -570,7 +570,7 @@ Prime_Shift = Skill:new{
 	Cost = "low",
 	PowerCost = 0,
 	Upgrades = 2,
-	UpgradeCost = {1,3},
+	UpgradeCost = {2,3},
 	Range = 1, --TOOLTIP INFO
 	LaunchSound = "/weapons/shift",
 	TipImage = StandardTips.Melee,
@@ -623,7 +623,7 @@ end
 
 
 Prime_Shift_A = Prime_Shift:new{
-	ArtillerySize = 4,
+	ArtillerySize = 5,
 	TipImage = {
 		Unit = Point(2,2),
 		Friendly = Point(2,1),
@@ -639,7 +639,7 @@ Prime_Shift_B = Prime_Shift:new{
 }
 
 Prime_Shift_AB = Prime_Shift:new{
-	FriendlyDamage = false,
+	ArtillerySize = 4,
 	Damage = 3,
 	TipImage = {
 		Unit = Point(2,2),

@@ -639,7 +639,7 @@ Prime_Shift_B = Prime_Shift:new{
 }
 
 Prime_Shift_AB = Prime_Shift:new{
-	ArtillerySize = 4,
+	ArtillerySize = 5,
 	Damage = 3,
 	TipImage = {
 		Unit = Point(2,2),

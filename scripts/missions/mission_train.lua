@@ -95,6 +95,7 @@ Train_Pawn =
 	SkillList = { "Train_Move" },
 	DefaultTeam = TEAM_PLAYER,
 	IgnoreSmoke = true,
+	IgnoreFlip = true,
 	IgnoreFire = true,
 	ExtraSpaces = { Point(0,1) },
 	SoundLocation = "/support/train",

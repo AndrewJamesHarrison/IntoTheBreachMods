@@ -69,10 +69,12 @@ end
 function Mission_Satellite:NextTurn()
 	if Game:GetTurnCount() == 1 and Game:GetTeamTurn() == TEAM_ENEMY and Board:IsPawnAlive(self.Satellites[1]) then
 		Board:GetPawn(self.Satellites[1]):SetPowered(true)
+		Game:TriggerSound("/ui/battle/buff_armor")
 	end
 	
 	if Game:GetTurnCount() == 3 and Game:GetTeamTurn() == TEAM_ENEMY and Board:IsPawnAlive(self.Satellites[2]) then
 		Board:GetPawn(self.Satellites[2]):SetPowered(true)
+		Game:TriggerSound("/ui/battle/buff_armor")
 	end
 end
 

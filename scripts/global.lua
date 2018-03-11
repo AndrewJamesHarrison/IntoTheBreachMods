@@ -122,6 +122,7 @@ Pawn = {
 	ImageOffset = 0,
 	Jumper = false,
 	IgnoreSmoke = false,
+	IgnoreFlip = false,
 	SelfHeal = false, -- this is a hack and won't actually add this ability (see BotBoss)
 	IgnoreFire = false,
 	Pushable = true,
